@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+html, body{
+    height: 100%;
+}
+
+/*here is everything of css login because we gonna use the same template
+in signIn*/
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+.logo{
+    height: 170px;
+    margin-bottom: 10px;
+}
+
+.body{
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}

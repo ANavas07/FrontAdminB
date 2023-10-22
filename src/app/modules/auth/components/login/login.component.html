@@ -1,0 +1,41 @@
+<div class="wrapper">
+
+    <div  class="body">
+        <img class="logo" src="../../../assets/img/login.png" alt="img Login">
+        <h3 class="mb-3">Ingreso</h3>
+
+        <form >
+            
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="userName" class="form-control" placeholder="Ingrese Usuario">
+                <label>Usuario</label>
+
+                <div class="alert alert-danger mt-2" >
+                    El campo del nombre del usuario esta vacio
+                </div>
+
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" formControlName="password" class="form-control" placeholder="Ingrese Contraseña">
+                <label>Contraseña</label>
+
+                <div class="alert alert-danger mt-2">
+
+                    <span>
+                        El password esta vacio
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+            </div>
+        
+            <p class="mt-3">¿No tienes cuenta? <a routerLink="/panel">Registrar</a></p>
+        
+        </form>
+
+    </div>
+
+</div>
