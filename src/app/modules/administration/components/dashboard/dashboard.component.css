@@ -27,6 +27,12 @@ button {
     transform: rotate(180deg);
 }
 
+.cardStyle:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+
 @media (min-width: 992px) {
     body {
         overflow: auto !important;

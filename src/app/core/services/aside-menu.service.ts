@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 export interface IAsideMenu {
   title: string;
   url: string;
-  icon: string
+  icon: string;
 }
 
 @Injectable({
@@ -27,8 +27,7 @@ export class AsideMenuService {
     { title: 'Agregar Proveedor', url: '/proveedores', icon: 'apartment' },
     { title: 'Registro De Productos', url: '/usuarios', icon: 'inventory' },
     { title: 'Salida De Productos', url: '/usuarios', icon: 'point_of_sale' },
-    { title: 'Reportes', url: '/usuarios', icon: 'report_gmailerrorred' },
-    { title: 'Salir', url: '/salir', icon: 'logout' }
+    { title: 'Reportes', url: '/usuarios', icon: 'report_gmailerrorred' }
   ];
 
   constructor() { }

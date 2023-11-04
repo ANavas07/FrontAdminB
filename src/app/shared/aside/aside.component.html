@@ -10,12 +10,17 @@
                     </div>
                 </li>
                 <li *ngFor="let menu of asideMenuList">
-                    <a [routerLink]="menu.url"  class="nav-link px-3 active">
+                    <a [routerLink]="menu.url"  class="nav-link px-3" routerLinkActive="active">
                         <span class="me-2"><span class="material-symbols-sharp">{{menu.icon}}</span></span>
                         <span>{{menu.title}}</span>
                     </a>
                 </li>
             </ul>
+
         </nav>
+    </div>
+
+    <div class="navbar-nav mt-auto">
+        <button class="btn btn-outline-light btn-lg" type="button" (click)="logout()"><span class="me-2 material-symbols-sharp">logout</span></button>
     </div>
 </div>
