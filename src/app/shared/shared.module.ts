@@ -5,6 +5,8 @@ import {Route, RouterModule} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ModalUserComponent } from './modal-user/modal-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -16,13 +18,15 @@ import { ModalUserComponent } from './modal-user/modal-user.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[
     AsideComponent,
     NavbarComponent,
     SpinnerComponent,
-    ModalUserComponent
+    ModalUserComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

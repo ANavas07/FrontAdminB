@@ -6,7 +6,6 @@ import { PageLoginComponent } from './pages/page-login/page-login.component';
 import { PageSignInComponent } from './pages/page-sign-in/page-sign-in.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule,
     SharedModule
   ]
 })

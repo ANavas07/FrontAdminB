@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardCardsService, ICardsMenu } from '../../../../core/services/dashboard-cards.service';
 import { Products } from 'src/app/interfaces/products.interfaces';
@@ -14,10 +14,6 @@ export class DashboardComponent implements OnInit {
 
   listCards:ICardsMenu[];
   listProducts: Products[] = [];
-
-  //modal
-  modalSwithc: boolean= false;
-  
 
   constructor(private _dashboardService: DashboardCardsService,
     private _productService: ProductsService,
@@ -35,9 +31,17 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  openModal(){
-    this.modalSwithc= !this.modalSwithc;
+  selectModalCard(card:ICardsMenu){
+    this.openModal(card.modal);
   }
+
+  openModal(nameModal:string){
+    const modalDiv= document.getElementById(nameModal);
+    if(modalDiv != null){
+      modalDiv.style.display='block';
+    }
+  }
+
 
 
 }

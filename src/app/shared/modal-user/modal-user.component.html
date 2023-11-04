@@ -1,20 +1,55 @@
-<!-- Tercer Modal Agregar Aqui inicio  -->
-<div class="modal fade" id="userModal" tabindex="" role="dialog" arial-labelledby="ejemplo" 
-    aria-hidden="true">
-        <!--arial-labelledby="ejemplo" definir o delimitar el area  -->
-        <div class="modal-dialog" role="document"> <!--document, digo que este modal va a tener incrustado un documento-->
-        
-            <div class="modal-content">   <!--dar color al contenedor  -->
+<div class="modal custom-modal" tabindex="-1" id="userModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar usuarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('userModal')"></button>
+            </div>
+            <form [formGroup]="formAddUser" (ngSubmit)="addUser('userModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Cedula de identidad</label>
+                                <input type="text" formControlName="dniUser"  class="form-control">
+                                <label class="col-form-label">Nombre</label>
+                                <input type="text" formControlName="nameUser" class="form-control">
+                                <label class="col-form-label">Apellido</label>
+                                <input type="text" formControlName="lastNameUser" class="form-control">
+                                <label class="col-form-label">Nombre de usuario</label>
+                                <input type="text" formControlName="userName" class="form-control">
+                                <label class="col-form-label">Contraseña</label>
+                                <input type="text" formControlName="passwordUser"  class="form-control">
+                                <label class="col-form-label">Repetir Contraseña</label>
+                                <input type="text" formControlName="passwordUserValidator" class="form-control">
+                                <br>
+                            </div>
 
-                <div class="modal-header">
-                    <h2>Seccion para agregar usuarios</h2>
+                        </div>
+                    </div>
 
-                    <!--data-dismiss="modal" que al cerrar quite los modals -->
-                    <button type="button" class="close" data-dismiss="modal"
-                    arial-label="Close">X</button>
                 </div>
 
-                <form id="formUsers">
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="submit" (click)="closeModal('userModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formAddUser.invalid" >Guardar</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+<!-- Modal to edit -->
+<div class="modal custom-modal" tabindex="-1" id="userModaledit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar usuarios</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form id="formUsers">
                 <div class="modal-body">
                     <div class="row">
                         <!-- aqui va 6 -->
@@ -23,19 +58,18 @@
 
                                 <br>
                                 <label class="col-form-label">Cedula de identidad</label>
-                                <input type="text" id="cedula" name="cedula" class="form-control">
+                                <input type="text"  name="cedula" class="form-control">
                                 <label class="col-form-label">Nombre</label>
-                                <input type="text" id="primerNombreAdd" name="primerNombreAdd" class="form-control">
+                                <input type="text"  name="primerNombreAdd" class="form-control">
                                 <label class="col-form-label">Apellido</label>
-                                <input type="text" id="segundoNombreAdd" name="segundoNombreAdd" class="form-control">
+                                <input type="text"  name="segundoNombreAdd" class="form-control">
                                 <label class="col-form-label">Nombre de usuario</label>
-                                <input type="text" id="correoAdd" name="correoAdd" class="form-control">
+                                <input type="text"  name="correoAdd" class="form-control">
                                 <label class="col-form-label">Contraseña</label>
-                                <input type="text" id="pw" name="pw" class="form-control">
+                                <input type="text"  name="pw" class="form-control">
                                 <label class="col-form-label">Repetir Contraseña</label>
-                                <input type="text" id="direccionAdd" name="direccionAdd" class="form-control">
+                                <input type="text"  name="direccionAdd" class="form-control">
                                 <br>
-                                <a id="uploadAgregar" href="#" class="btn btn-sm btn-info float-left">Subir archivos</a>
                             </div>
 
                         </div>
@@ -47,11 +81,6 @@
                     <button class="btn" type="submit">Guardar</button>
                 </div>
             </form>
-
-            </div>
-
         </div>
-
-
     </div>
-    
+</div>
