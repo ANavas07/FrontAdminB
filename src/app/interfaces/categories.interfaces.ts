@@ -3,3 +3,5 @@ export interface Categories{
     nameCat: string;
     descriptionCat: string;
 }
+
+export type CategoriesEdit=Pick<Categories, 'nameCat'|'descriptionCat'>

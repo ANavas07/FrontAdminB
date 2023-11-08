@@ -23,4 +23,9 @@ export class ProductsService {
     return this.http.get<Products[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
 
+  deleteProductById(idProduct:string): Observable<string>{
+    return this.http.delete<string>(`${this.myAppUrl}${this.myApiUrl}/${idProduct}`)
+  }
+  
+
 }

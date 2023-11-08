@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {User, userLoginFields} from '../../../../interfaces/user.interfaces';
+import {User, UserLoginFields} from '../../../../interfaces/user.interfaces';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
@@ -34,7 +34,7 @@ export class LoginComponent{
   })
 
   login(){
-    const user:userLoginFields ={
+    const user:UserLoginFields ={
       userName: this.formLogIn.get('userName')?.value || '',
       passwordUser: this.formLogIn.get('passwordUser')?.value || ''
     }

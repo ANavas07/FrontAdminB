@@ -1,0 +1,86 @@
+<div class="modal custom-modal" tabindex="-1" id="supplierModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Proovedores</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('supplierModal')"></button>
+            </div>
+            <form [formGroup]="formAddSupplier" (ngSubmit)="addSupplier('supplierModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Identificador Proveedor</label>
+                                <input type="text" formControlName="idSup"  class="form-control">
+                                <label class="col-form-label">Nombre del proveedor</label>
+                                <input type="text" formControlName="nameSup" class="form-control">
+                                <label class="col-form-label">Numero telefonico</label>
+                                <input type="text" formControlName="phoneSup" class="form-control">
+                                <label class="col-form-label">Dirección</label>
+                                <input type="text" formControlName="addressSup" class="form-control">
+                                <label class="col-form-label">Email</label>
+                                <input type="text" formControlName="emailSup"  class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="emailSup.valid || emailSup.pristine">
+                                    El formato del correo debe texto&#64;direccion.com
+                                </div>
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('supplierModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formAddSupplier.invalid" >Guardar</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit -->
+<div class="modal custom-modal" tabindex="-1" id="supplierEditModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Proovedores</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('supplierEditModal')"></button>
+            </div>
+            <form [formGroup]="formEditSupplier" (ngSubmit)="editSupplier('supplierEditModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Identificador Proveedor</label>
+                                <input type="text" formControlName="idSup"  class="form-control">
+                                <label class="col-form-label">Nombre del proveedor</label>
+                                <input type="text" formControlName="nameSup" class="form-control">
+                                <label class="col-form-label">Numero telefonico</label>
+                                <input type="text" formControlName="phoneSup" class="form-control">
+                                <label class="col-form-label">Dirección</label>
+                                <input type="text" formControlName="addressSup" class="form-control">
+                                <label class="col-form-label">Email</label>
+                                <input type="text" formControlName="emailSup"  class="form-control">
+                                <div class="alert alert-danger mt-1" [hidden]="emailSupEdit.valid || emailSupEdit.pristine">
+                                    El formato del correo debe texto&#64;direccion.com
+                                </div>
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('supplierEditModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formEditSupplier.invalid" >Guardar</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>

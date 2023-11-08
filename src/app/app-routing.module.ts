@@ -15,7 +15,10 @@ const routes: Routes = [
   {path:'login', component:PageLoginComponent},
   //{path:'panel', component:PageDashboardComponent},
   {path:'panel', loadChildren:() =>import('./modules/administration/administration.module').then((m) => m.AdministrationModule), canActivate:[authGuard]},
-  {path:'registro', loadChildren:() =>import('./modules/auth/auth.module').then((m)=>m.AuthModule)}
+  {path:'usuarios', loadChildren:() =>import('./modules/auth/auth.module').then((m)=>m.AuthModule), canActivate:[authGuard]},
+  {path:'proveedores', loadChildren:() =>import('./modules/suppliers-administration/suppliers-administration.module').then((m)=>m.SuppliersAdministrationModule), canActivate:[authGuard]},
+  {path:'categorias', loadChildren:() =>import('./modules/categories-administration/categories-administration.module').then((m)=>m.CategoriesAdministrationModule), canActivate:[authGuard]}
+
 ];
 
 @NgModule({

@@ -9,6 +9,7 @@ export interface ICardsMenu{
   modal:string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,16 +21,41 @@ export class DashboardCardsService {
 
   
   private listCards: ICardsMenu[]=[
-    {title:'Agregar usuario', icon:'person_add', color:'primary', textColor:'white', modal:'userModal'},
-    {title:'Agregar Proveedor', icon:'apartment', color:'warning', textColor:'dark', modal:'addSupplier'},
-    {title:'Agregar Producto', icon:'add_circle', color:'success', textColor:'white', modal:'addProduct'},
-    {title:'Agregar Categoria', icon:'category', color:'info', textColor:'dark', modal:'addCategory'}
+    {title:'Agregar Producto', icon:'add_circle', color:'primary', textColor:'white', modal:'addProduct'},
+    {title:'Agregar Categoria', icon:'category', color:'info', textColor:'dark', modal:'categoryModal'},
+    {title:'Agregar Proveedor', icon:'apartment', color:'warning', textColor:'dark', modal:'supplierModal'},
+    {title:'Agregar usuario', icon:'person_add', color:'success', textColor:'white', modal:'userModal'}
+  ];
+
+  private listCardsUsers: ICardsMenu[]=[
+    {title:'Agregar usuario', icon:'person_add', color:'success', textColor:'white', modal:'userModal'}
+  ];
+
+  private listCardsSuppliers: ICardsMenu[]=[
+    {title:'Agregar proveedor', icon:'apartment', color:'warning', textColor:'dark', modal:'supplierModal'}
+  ];
+
+  private listCardsCategories: ICardsMenu[]=[
+    {title:'Agregar Categoria',  icon:'category', color:'info', textColor:'dark', modal:'categoryModal'}
   ];
   
   constructor() { }
 
+  //this is for panel
   getDashboardCards(){
     return [...this.listCards];
+  }
+
+  getUsersCards(){
+    return [...this.listCardsUsers];
+  }
+
+  getSuppliersCards(){
+    return [...this.listCardsSuppliers];
+  }
+
+  getCategoriesCards(){
+    return [...this.listCardsCategories];
   }
 
 

@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn btn-danger" type="submit" (click)="closeModal('userModal')">Cerrar</button>
+                    <button class="btn btn-danger" type="button" (click)="closeModal('userModal')">Cerrar</button>
                     <button class="btn btn-primary" type="submit" [disabled]="formAddUser.invalid" >Guardar</button>
                 </div>
             </form> 
@@ -46,10 +46,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Editar usuarios</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('userModaledit')"></button>
             </div>
 
-            <form id="formUsers">
+            <form  [formGroup]="formEditUser" (ngSubmit)="editUser('userModaledit')">
                 <div class="modal-body">
                     <div class="row">
                         <!-- aqui va 6 -->
@@ -58,17 +58,13 @@
 
                                 <br>
                                 <label class="col-form-label">Cedula de identidad</label>
-                                <input type="text"  name="cedula" class="form-control">
+                                <input type="text" formControlName="dniUser"  class="form-control">
                                 <label class="col-form-label">Nombre</label>
-                                <input type="text"  name="primerNombreAdd" class="form-control">
+                                <input type="text" formControlName="nameUser" class="form-control">
                                 <label class="col-form-label">Apellido</label>
-                                <input type="text"  name="segundoNombreAdd" class="form-control">
+                                <input type="text" formControlName="lastNameUser" class="form-control">
                                 <label class="col-form-label">Nombre de usuario</label>
-                                <input type="text"  name="correoAdd" class="form-control">
-                                <label class="col-form-label">Contraseña</label>
-                                <input type="text"  name="pw" class="form-control">
-                                <label class="col-form-label">Repetir Contraseña</label>
-                                <input type="text"  name="direccionAdd" class="form-control">
+                                <input type="text" formControlName="userName" class="form-control">
                                 <br>
                             </div>
 
@@ -78,7 +74,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button class="btn" type="submit">Guardar</button>
+                    <button class="btn btn-danger" type="button" (click)="closeModal('userModaledit')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit"  [disabled]="formEditUser.invalid" >Guardar</button>
                 </div>
             </form>
         </div>

@@ -25,9 +25,10 @@ export class AsideMenuService {
     { title: 'Panel', url: '/panel', icon: 'grid_view' },
     { title: 'Agregar Usuario', url: '/usuarios', icon: 'person_add' },
     { title: 'Agregar Proveedor', url: '/proveedores', icon: 'apartment' },
-    { title: 'Registro De Productos', url: '/usuarios', icon: 'inventory' },
-    { title: 'Salida De Productos', url: '/usuarios', icon: 'point_of_sale' },
-    { title: 'Reportes', url: '/usuarios', icon: 'report_gmailerrorred' }
+    { title: 'Gestion Categorias', url: '/categorias', icon: 'category' },
+    { title: 'Registro De Productos', url: '/registro', icon: 'inventory' },
+    { title: 'Salida De Productos', url: '/salida', icon: 'point_of_sale' },
+    { title: 'Reportes', url: '/reportes', icon: 'report_gmailerrorred' }
   ];
 
   constructor() { }

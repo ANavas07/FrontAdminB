@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <app-aside></app-aside>
 <!-- Modals -->
-<app-modal-user></app-modal-user>
+<app-modal-category></app-modal-category>
 
 <main class="mt-5 pt-3">
     <div class="container-fluid">
@@ -10,6 +10,7 @@
                 <h4>Dashboard</h4>
             </div>
         </div>
+        
         <div class="row">
             <div *ngFor="let card of listCards" (click)="selectModalCard(card)" class="col-md-3 mb-3 cardStyle">
                 <div class="card bg-{{card.color}} text-{{card.textColor}} h-100">
@@ -34,22 +35,19 @@
                             <table id="example" class="table table-striped data-table" style="width: 100%">
                                 <thead>
                                     <tr>
-                                        <th>Identificación</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Nombre de usuario</th>
-                                        <th>Acciones</th>
+                                        <th>Categoria ID</th>
+                                        <th>Nombre de la categoria</th>
+                                        <th>descripcion</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of listUsers">
-                                        <td>{{item.dniUser}}</td>
-                                        <td>{{item.nameUser}}</td>
-                                        <td>{{item.lastNameUser}}</td>
-                                        <td>{{item.userName}}</td>
+                                    <tr *ngFor="let item of listCategories">
+                                        <td>{{item.idCat}}</td>
+                                        <td>{{item.nameCat}}</td>
+                                        <td>{{item.descriptionCat}}</td>
                                         <td>
-                                            <button (click)="editUser('userModaledit', item)" type="button" style="margin-right: 10px;" class="btn btn-primary">Editar</button>
-                                            <button (click)="deleteUser(item.dniUser)" type="button" style="margin-left: 10px;" class="btn btn-danger">Eliminar</button>
+                                            <button (click)="editCategory('categoryEditModal', item)" type="button" style="margin-right: 10px;" class="btn btn-primary">Editar</button>
+                                            <button (click)="deleteCategory(item.idCat)" type="button" style="margin-left: 10px;" class="btn btn-danger">Eliminar</button>
                                         </td>
                                     </tr>
                                 </tbody>

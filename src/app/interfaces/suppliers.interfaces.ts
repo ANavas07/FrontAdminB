@@ -5,3 +5,5 @@ export interface Suppliers{
     addressSup: string;
     emailSup: string;
 }
+
+export type SuppliersEdit=Pick<Suppliers, 'nameSup'|'phoneSup'|'addressSup'|'emailSup'>

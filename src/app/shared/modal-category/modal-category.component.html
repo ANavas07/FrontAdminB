@@ -1,0 +1,72 @@
+<div class="modal custom-modal" tabindex="-1" id="categoryModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Proovedores</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('categoryModal')"></button>
+            </div>
+            <form [formGroup]="formAddCategory" (ngSubmit)="addCategory('categoryModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Identificador Categoria</label>
+                                <input type="text" formControlName="idCat"  class="form-control">
+                                <label class="col-form-label">Nombre de la Cateogoria</label>
+                                <input type="text" formControlName="nameCat" class="form-control">
+                                <label class="col-form-label">Descripción de la categoria</label>
+                                <input type="text" formControlName="descriptionCat" class="form-control">
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('categoryModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formAddCategory.invalid" >Guardar</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit -->
+<div class="modal custom-modal" tabindex="-1" id="categoryEditModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Proovedores</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('categoryEditModal')"></button>
+            </div>
+            <form [formGroup]="formEditCategory" (ngSubmit)="editcategory('categoryEditModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Identificador Categoria</label>
+                                <input type="text" formControlName="idCat"  class="form-control">
+                                <label class="col-form-label">Nombre de la Cateogoria</label>
+                                <input type="text" formControlName="nameCat" class="form-control">
+                                <label class="col-form-label">Descripción de la categoria</label>
+                                <input type="text" formControlName="descriptionCat" class="form-control">
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('categoryEditModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formEditCategory.invalid" >Guardar</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>

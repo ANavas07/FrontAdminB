@@ -7,4 +7,5 @@ export interface User{
     userRole: string;
 }
 
-export type userLoginFields= Pick<User, 'userName' | 'passwordUser'>;
+export type UserEdit= Pick<User, 'nameUser'|'lastNameUser'|'userName'>
+export type UserLoginFields= Pick<User, 'userName' | 'passwordUser'>;

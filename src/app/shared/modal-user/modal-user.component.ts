@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { User } from 'src/app/interfaces/user.interfaces';
+import { User, UserEdit } from 'src/app/interfaces/user.interfaces';
 import { ErrorService } from 'src/app/services/error.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -52,6 +52,37 @@ export class ModalUserComponent {
     "passwordUserValidator": new FormControl('', Validators.required),
   })
 
+  //Here start my modal edit------
+
+  get userNameEmptyE() {
+    return this.formEditUser.get('userName') as FormControl;
+  }
+
+  get passwordEmptyE() {
+    return this.formEditUser.get('passwordUser') as FormControl;
+  }
+
+  get dniUserEmptyE() {
+    return this.formEditUser.get('dniUser') as FormControl;
+  }
+
+  get nameUserEmptyE() {
+    return this.formEditUser.get('nameUser') as FormControl;
+  }
+
+  get lastNameUserEmptyE() {
+    return this.formEditUser.get('lastNameUser') as FormControl;
+  }
+  
+  formEditUser = new FormGroup({
+    "dniUser": new FormControl({value:'', disabled:true}),
+    "nameUser": new FormControl('', Validators.required),
+    "lastNameUser": new FormControl('', Validators.required),
+    "userName": new FormControl('', Validators.required),
+    "passwordUser": new FormControl('', Validators.required)
+  })
+
+
   addUser(modalName:string){
 
     if (this.formAddUser.get('passwordUser')?.value != this.formAddUser.get('passwordUserValidator')?.value) {
@@ -70,15 +101,38 @@ export class ModalUserComponent {
 
     this._userService.signIn(user).subscribe({
       next:(v) =>{
-        this.toastr.success('El usuario fue registrado con exito', 'Usuario Registrado');
+        this.toastr.success(v.msg, "Exito!");
         setTimeout(() => {
           this.closeModal(modalName);
-        }, 3000); // wait 5 seconds before to close modal
+        }, 1000); // wait 5 seconds before to close modal
       },
       error:(e: HttpErrorResponse)=>{
         this._errorService.msgError(e);
       }
     });
+
+  }
+
+  editUser(modalName:string){
+    const idUser= this.formEditUser.get('dniUser')?.value||'';
+
+    const user:UserEdit={
+      nameUser:this.formEditUser.get('nameUser')?.value || '',
+      lastNameUser:this.formEditUser.get('lastNameUser')?.value || '',
+      userName:this.formEditUser.get('userName')?.value || '',
+    }
+
+    this._userService.editUser(idUser, user).subscribe({
+      next:(v) =>{
+        this.toastr.success(v.msg, "Exito!");
+        setTimeout(() => {
+          this.closeModal(modalName);
+        }, 1000); // wait 5 seconds before to close modal
+      },
+      error:(e: HttpErrorResponse)=>{
+        this._errorService.msgError(e);
+      }
+    })
 
   }
 
@@ -90,4 +144,5 @@ export class ModalUserComponent {
       modalDiv.style.display = 'none';
     }
   }
+  
 }

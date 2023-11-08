@@ -1,0 +1,91 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Categories, CategoriesEdit } from 'src/app/interfaces/categories.interfaces';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { ErrorService } from 'src/app/services/error.service';
+
+
+@Component({
+  selector: 'app-modal-category',
+  templateUrl: './modal-category.component.html',
+  styleUrls: ['./modal-category.component.css']
+})
+export class ModalCategoryComponent {
+
+  
+  constructor(private toastr: ToastrService, private _categoriesService: CategoriesService,
+    private router: Router, private _errorService: ErrorService) { }
+
+
+  formAddCategory = new FormGroup({
+    "idCat": new FormControl('', Validators.required),
+    "nameCat": new FormControl('', Validators.required),
+    "descriptionCat": new FormControl('', Validators.required),
+  });
+
+  formEditCategory = new FormGroup({
+    "idCat": new FormControl({value:'', disabled:true}),
+    "nameCat": new FormControl('', Validators.required),
+    "descriptionCat": new FormControl('', Validators.required),
+  });
+
+  addCategory(modalName:string){
+    const category:Categories={
+      idCat:this.formAddCategory.get('idCat')?.value || '',
+      nameCat:this.formAddCategory.get('nameCat')?.value || '',
+      descriptionCat:this.formAddCategory.get('descriptionCat')?.value || ''
+    }
+
+    this._categoriesService.addCategory(category).subscribe({
+      next:(v) =>{
+        this.toastr.success(v.msg, "Exito!");
+        setTimeout(() => {
+          this.closeModal(modalName);
+        }, 1000); // wait 5 seconds before to close modal
+      },
+      error:(e: HttpErrorResponse)=>{
+        this._errorService.msgError(e);
+      }
+    });
+
+  }
+
+
+  editcategory(modalName:string){
+    const idCat= this.formEditCategory.get('idCat')?.value||'';
+
+    const category:CategoriesEdit={
+      nameCat:this.formEditCategory.get('nameCat')?.value || '',
+      descriptionCat:this.formEditCategory.get('descriptionCat')?.value || ''
+    }
+
+    this._categoriesService.updateCategory(idCat, category).subscribe({
+      next:(v) =>{
+        this.toastr.success(v.msg, "Exito!");
+        setTimeout(() => {
+          this.closeModal(modalName);
+        }, 1000); // wait 5 seconds before to close modal
+      },
+      error:(e: HttpErrorResponse)=>{
+        this._errorService.msgError(e);
+      }
+    })
+
+  }
+
+
+
+  closeModal(name: string) {
+    const modalDiv = document.getElementById(name);
+    if (modalDiv != null) {
+      modalDiv.style.display = 'none';
+      this.formAddCategory.reset();
+      this.formEditCategory.reset();
+    }
+  }
+
+
+}
