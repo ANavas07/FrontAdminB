@@ -28,17 +28,17 @@ export class ModalSupplierComponent {
 
 
   formAddSupplier = new FormGroup({
-    "idSup": new FormControl('', Validators.required),
-    "nameSup": new FormControl('', Validators.required),
-    "phoneSup": new FormControl('', Validators.required),
+    "idSup": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+    "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "phoneSup": new FormControl('', [Validators.required, Validators.pattern(/^\d{1,17}$/)]),
     "addressSup": new FormControl('', Validators.required),
     "emailSup": new FormControl('', [Validators.required, Validators.email])
   });
 
   formEditSupplier = new FormGroup({
     "idSup": new FormControl({value:'', disabled:true}),
-    "nameSup": new FormControl('', Validators.required),
-    "phoneSup": new FormControl('', Validators.required),
+    "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "phoneSup": new FormControl('',  [Validators.required, Validators.pattern(/^\d{1,17}$/)]),
     "addressSup": new FormControl('', Validators.required),
     "emailSup": new FormControl('', [Validators.required, Validators.email])
   });

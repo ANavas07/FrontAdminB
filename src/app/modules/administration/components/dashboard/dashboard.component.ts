@@ -4,6 +4,8 @@ import { DashboardCardsService, ICardsMenu } from '../../../../core/services/das
 import { Products } from 'src/app/interfaces/products.interfaces';
 import { ProductsService } from 'src/app/services/products.service';
 import { ModalUserComponent } from 'src/app/shared/modal-user/modal-user.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalProductsComponent } from 'src/app/shared/modal-products/modal-products.component';
 
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,19 +16,24 @@ import { ModalUserComponent } from 'src/app/shared/modal-user/modal-user.compone
 })
 export class DashboardComponent implements OnInit {
   //to have access to the modalComponent
-  //@ViewChild(ModalUserComponent) modalComponent: ModalUserComponent;
+  @ViewChild(ModalProductsComponent) modalComponent!: ModalProductsComponent;
 
-  listCards:ICardsMenu[];
+  listCards: ICardsMenu[];
   listProducts: Products[] = [];
 
   constructor(private _dashboardService: DashboardCardsService,
     private _productService: ProductsService,
     private router: Router) {
-      this.listCards=_dashboardService.getDashboardCards();
+    this.listCards = _dashboardService.getDashboardCards();
   }
 
   ngOnInit(): void {
     this.getProducts();
+
+    this._productService.dataModifiedTable.subscribe(() => {
+      this.getProducts()
+    })
+
   }
 
   getProducts() {
@@ -35,32 +42,36 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  selectModalCard(card:ICardsMenu){
+  selectModalCard(card: ICardsMenu) {
     this.openModal(card.modal);
   }
 
-  openModal(nameModal:string){
-    const modalDiv= document.getElementById(nameModal);
-    if(modalDiv != null){
-      modalDiv.style.display='block';
+  openModal(nameModal: string) {
+    const modalDiv = document.getElementById(nameModal);
+    if (modalDiv != null) {
+      modalDiv.style.display = 'block';
     }
   }
 
 
   //tables funcionatility
-  editProduct(item:Products){
-      /*this.modalComponent.formAddUser.patchValue({
-        idProduct: item.idProduct,
-        idCatBelong: item.idCatBelong,
-        productName: item.productName,
-        productPrice: item.productPrice,
-        stock: item.stock,
-        available: item.available
-      });*/
+
+  editProduct(nameModal:string,item: Products) {
+
+    this.modalComponent.formEditProduct.patchValue({
+      idProduct: item.idProduct,
+      idCatBelong: item.idCatBelong,
+      productName: item.productName,
+      productPrice: item.productPrice.toString(),
+      stock: item.stock.toString(),
+      available: item.available.toString()
+    });
+
+    this.openModal(nameModal);
   }
 
-  deleteProduct(idProduct:string){
-    this._productService.deleteProductById(idProduct).subscribe(data =>{
+  deleteProduct(idProduct: string) {
+    this._productService.deleteProductById(idProduct).subscribe(data => {
       console.log(data)
       //to refresh the table
       this.getProducts();

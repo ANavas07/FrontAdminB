@@ -17,7 +17,9 @@ const routes: Routes = [
   {path:'panel', loadChildren:() =>import('./modules/administration/administration.module').then((m) => m.AdministrationModule), canActivate:[authGuard]},
   {path:'usuarios', loadChildren:() =>import('./modules/auth/auth.module').then((m)=>m.AuthModule), canActivate:[authGuard]},
   {path:'proveedores', loadChildren:() =>import('./modules/suppliers-administration/suppliers-administration.module').then((m)=>m.SuppliersAdministrationModule), canActivate:[authGuard]},
-  {path:'categorias', loadChildren:() =>import('./modules/categories-administration/categories-administration.module').then((m)=>m.CategoriesAdministrationModule), canActivate:[authGuard]}
+  {path:'categorias', loadChildren:() =>import('./modules/categories-administration/categories-administration.module').then((m)=>m.CategoriesAdministrationModule), canActivate:[authGuard]},
+  {path:'registro', loadChildren:() =>import('./modules/registration-products/registration-products.module').then((m)=>m.RegistrationProductsModule), canActivate:[authGuard]},
+  {path:'salida', loadChildren:() =>import('./modules/output-products/output-products.module').then((m)=>m.OutputProductsModule), canActivate:[authGuard]}
 
 ];
 

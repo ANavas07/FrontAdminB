@@ -21,15 +21,15 @@ export class ModalCategoryComponent {
 
 
   formAddCategory = new FormGroup({
-    "idCat": new FormControl('', Validators.required),
-    "nameCat": new FormControl('', Validators.required),
-    "descriptionCat": new FormControl('', Validators.required),
+    "idCat": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+    "nameCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "descriptionCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
   });
 
   formEditCategory = new FormGroup({
     "idCat": new FormControl({value:'', disabled:true}),
-    "nameCat": new FormControl('', Validators.required),
-    "descriptionCat": new FormControl('', Validators.required),
+    "nameCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "descriptionCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
   });
 
   addCategory(modalName:string){

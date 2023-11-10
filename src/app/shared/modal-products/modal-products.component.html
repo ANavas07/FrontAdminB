@@ -1,0 +1,108 @@
+<div class="modal custom-modal" tabindex="-1" id="ProductModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Productos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal('ProductModal')"></button>
+            </div>
+            <form [formGroup]="formAddProduct" (ngSubmit)="addProducts('ProductModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Identificador Producto</label>
+                                <input type="text" formControlName="idProduct" class="form-control">
+                                
+                                <!-- Datalist -->
+                                <label for="exampleDataList" class="form-label">Categoria</label>
+                                <input class="form-control" formControlName="idCatBelong" list="datalistOptions" id="exampleDataList"
+                                    placeholder="Busqueda">
+                                <datalist id="datalistOptions">
+                                    <option *ngFor="let category of listCategories" [value]="category.idCat">{{category.nameCat}}
+                                </datalist>
+                                <!--  Datalist -->
+
+                                <label class="col-form-label">Nombre</label>
+                                <input type="text" formControlName="productName" class="form-control">
+                                <label class="col-form-label">Precio</label>
+                                <input type="text" formControlName="productPrice" class="form-control">
+                                <label class="col-form-label">Existencias</label>
+                                <input type="text" formControlName="stock" class="form-control">
+                                <label class="col-form-label">Disponibilidad</label>
+                                <select formControlName="available" class="form-select form-select-sm" aria-label="Small select example">
+                                    <option value="true">Disponible</option>
+                                    <option value="false">No disponible</option>
+                                </select>
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('ProductModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formAddProduct.invalid">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit -->
+<div class="modal custom-modal" tabindex="-1" id="ProductEditModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal('ProductEditModal')"></button>
+            </div>
+            <form [formGroup]="formEditProduct" (ngSubmit)="editproduct('ProductEditModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <label class="col-form-label">Identificador Producto</label>
+                                <input type="text" formControlName="idProduct" class="form-control">
+                                
+                                <!-- Datalist -->
+                                <label for="exampleDataList" class="form-label">Categoria</label>
+                                <input class="form-control" formControlName="idCatBelong" list="datalistOptions" id="exampleDataList"
+                                    placeholder="Busqueda">
+                                <datalist id="datalistOptions">
+                                    <option *ngFor="let category of listCategories" [value]="category.idCat">{{category.nameCat}}
+                                </datalist>
+                                <!--  Datalist -->
+
+                                <label class="col-form-label">Nombre</label>
+                                <input type="text" formControlName="productName" class="form-control">
+                                <label class="col-form-label">Precio</label>
+                                <input type="text" formControlName="productPrice" class="form-control">
+                                <label class="col-form-label">Existencias</label>
+                                <input type="text" formControlName="stock" class="form-control">
+                                <label class="col-form-label">Disponibilidad</label>
+                                <select formControlName="available" class="form-select form-select-sm" aria-label="Small select example">
+                                    <option value="true">Disponible</option>
+                                    <option value="false">No disponible</option>
+                                </select>
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('ProductEditModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formEditProduct.invalid">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

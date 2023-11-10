@@ -1,0 +1,41 @@
+<div class="modal custom-modal" tabindex="-1" id="ProductRegistrationModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Productos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal('ProductRegistrationModal')"></button>
+            </div>
+            <form [formGroup]="formAddProductRegistration" (ngSubmit)="addRegistrationProduct('ProductRegistrationModal')">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-10 row">
+                            <div class="form-group">
+                                <br>
+                                <!-- Datalist -->
+                                <label for="exampleDataList" class="form-label">Identificador Producto</label>
+                                <input class="form-control" formControlName="idProduct" list="datalistOptions" id="exampleDataList"
+                                    placeholder="Busqueda">
+                                <datalist id="datalistOptions">
+                                    <option *ngFor="let product of listProducts" [value]="product.idProduct">{{product.productName}}
+                                </datalist>
+                                <!--  Datalist -->
+                                <label class="col-form-label">Cantidad</label>
+                                <input type="text" formControlName="quantity" class="form-control">
+                                
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" (click)="closeModal('ProductRegistrationModal')">Cerrar</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="formAddProductRegistration.invalid">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

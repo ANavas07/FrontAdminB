@@ -21,7 +21,7 @@ export class DashboardCardsService {
 
   
   private listCards: ICardsMenu[]=[
-    {title:'Agregar Producto', icon:'add_circle', color:'primary', textColor:'white', modal:'addProduct'},
+    {title:'Agregar Producto', icon:'add_circle', color:'primary', textColor:'white', modal:'ProductModal'},
     {title:'Agregar Categoria', icon:'category', color:'info', textColor:'dark', modal:'categoryModal'},
     {title:'Agregar Proveedor', icon:'apartment', color:'warning', textColor:'dark', modal:'supplierModal'},
     {title:'Agregar usuario', icon:'person_add', color:'success', textColor:'white', modal:'userModal'}

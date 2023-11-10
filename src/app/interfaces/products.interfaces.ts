@@ -6,3 +6,5 @@ export interface Products{
     stock: number;
     available: boolean;
 }
+
+export type ProductsEdit= Pick<Products, 'idCatBelong'|'productName'|'productPrice'|'stock'|'available'>

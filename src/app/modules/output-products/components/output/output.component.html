@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<app-aside></app-aside>
+<!-- Modals -->
+<app-modal-registration></app-modal-registration>
+
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Salida De Productos</h4>
+            </div>
+        </div>
+        <!-- la tabla esta en este row -->
+        <div class="row text-center">
+            <div class="col-md-12 mb-3">
+
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="bi bi-table me-2"></i></span> Formulario Salida de productos
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-9">
+                        <div class="wrapper">
+                            <form [formGroup]="formAddOutput" (ngSubmit)="addOutPut()">
+                                <!-- Be careful with the name of the input id and the datalist id -->
+                                <input class="form-control mb-2" formControlName="dniUserReceive" list="datalistOptionsUserOut" id="exampleDataListUser"
+                                    placeholder="Salida Permitida por:">
+                                <datalist id="datalistOptionsUserOut">
+                                    <option *ngFor="let user of listUsers" [value]="user.dniUser">{{user.nameUser}}
+                                </datalist>
+
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-success btn-sm" [disabled]="formAddOutput.invalid">Agregar Salida</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-3 d-flex justify-content-center align-items-center">
+                        <button (click)="openModal('ProductRegistrationModal')" type="button"
+                            class="btn btn-outline-danger">Registrar Nuevo Producto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- la tabla esta en este row -->
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="bi bi-table me-2"></i></span> detalle
+                    </div>
+                    <div class="card-body">
+                        <!-- El style fue lo ultimo que agregue para que aparezca el scroll xd -->
+                        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+                            <table id="example" class="table table-striped data-table" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>Identificador Del producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of registrationList">
+                                        <td>{{item.idProductBelong}}</td>
+                                        <td>{{item.productQty}}</td>
+                                        <td>
+                                            <button (click)="deleteProductFromList(item)" type="button" style="margin-left: 10px;" class="btn btn-danger">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>

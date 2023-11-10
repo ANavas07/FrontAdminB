@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar Proovedores</h5>
+                <h5 class="modal-title">Agregar Categorias</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('categoryModal')"></button>
             </div>
             <form [formGroup]="formAddCategory" (ngSubmit)="addCategory('categoryModal')">
@@ -39,7 +39,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Proovedores</h5>
+                <h5 class="modal-title">Editar Categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('categoryEditModal')"></button>
             </div>
             <form [formGroup]="formEditCategory" (ngSubmit)="editcategory('categoryEditModal')">
@@ -50,7 +50,7 @@
                                 <br>
                                 <label class="col-form-label">Identificador Categoria</label>
                                 <input type="text" formControlName="idCat"  class="form-control">
-                                <label class="col-form-label">Nombre de la Cateogoria</label>
+                                <label class="col-form-label">Nombre de la Categoria</label>
                                 <input type="text" formControlName="nameCat" class="form-control">
                                 <label class="col-form-label">Descripción de la categoria</label>
                                 <input type="text" formControlName="descriptionCat" class="form-control">

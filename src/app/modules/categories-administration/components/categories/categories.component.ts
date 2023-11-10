@@ -80,6 +80,4 @@ export class CategoriesComponent {
     }
 
 
-
-
 }

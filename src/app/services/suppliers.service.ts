@@ -9,7 +9,7 @@ import { Observable, Subject, tap } from 'rxjs';
 })
 export class SuppliersService {
   //publication and subscription pattern, i use that to refresh my data in the tables
-  dataModifiedTable= new Subject<void>();
+  dataModifiedTable = new Subject<void>();
 
   //Contain the general url
   private myAppUrl: string;
@@ -17,31 +17,31 @@ export class SuppliersService {
   private myApiUrl: string;
 
   constructor(private http: HttpClient) {
-    this.myAppUrl= AppSettings.readAppSettings().environment.ENDPOINT;
-    this.myApiUrl='api/suppliers/';
+    this.myAppUrl = AppSettings.readAppSettings().environment.ENDPOINT;
+    this.myApiUrl = 'api/suppliers/';
   }
 
-  addSupplier(suppliers: Suppliers): Observable<any>{
+  addSupplier(suppliers: Suppliers): Observable<any> {
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, suppliers).pipe(
-      tap(()=>{
-          this.dataModifiedTable.next()
+      tap(() => {
+        this.dataModifiedTable.next()
       })
     );
   }
 
-  getSuppliers(): Observable<Suppliers[]>{
+  getSuppliers(): Observable<Suppliers[]> {
     return this.http.get<Suppliers[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
-  
-  updateSuppliers(idSup:string, supplier:SuppliersEdit): Observable<any>{
-    return this.http.put<string>(`${this.myAppUrl}${this.myApiUrl}/${idSup}`,supplier).pipe(
-      tap(()=>{
-          this.dataModifiedTable.next()
+
+  updateSuppliers(idSup: string, supplier: SuppliersEdit): Observable<any> {
+    return this.http.put<string>(`${this.myAppUrl}${this.myApiUrl}/${idSup}`, supplier).pipe(
+      tap(() => {
+        this.dataModifiedTable.next()
       })
     );;
   }
 
-  deleteSuppliers(idSup:string): Observable<any>{
+  deleteSuppliers(idSup: string): Observable<any> {
     return this.http.delete<string>(`${this.myAppUrl}${this.myApiUrl}/${idSup}`);
   }
 

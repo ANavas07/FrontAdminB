@@ -3,6 +3,8 @@
 <!-- Modals -->
 <app-modal-user></app-modal-user>
 <app-modal-supplier></app-modal-supplier>
+<app-modal-products></app-modal-products>
+<app-modal-category></app-modal-category>
 
 <main class="mt-5 pt-3">
     <div class="container-fluid">
@@ -87,7 +89,7 @@
                                         <td>{{item.stock}}</td>
                                         <td>{{item.available}}</td>
                                         <td>
-                                            <button (click)="editProduct(item)"  type="button" style="margin-right: 10px;" class="btn btn-primary">Editar</button>
+                                            <button (click)="editProduct('ProductEditModal',item)"  type="button" style="margin-right: 10px;" class="btn btn-primary">Editar</button>
                                             <button  (click)="deleteProduct(item.idProduct)" type="button" style="margin-left: 10px;" class="btn btn-danger">Eliminar</button>
                                         </td>
                                     </tr>

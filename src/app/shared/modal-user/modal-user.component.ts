@@ -44,12 +44,12 @@ export class ModalUserComponent {
   }
 
   formAddUser = new FormGroup({
-    "dniUser": new FormControl('', Validators.required),
-    "nameUser": new FormControl('', Validators.required),
-    "lastNameUser": new FormControl('', Validators.required),
-    "userName": new FormControl('', Validators.required),
-    "passwordUser": new FormControl('', Validators.required),
-    "passwordUserValidator": new FormControl('', Validators.required),
+    "dniUser": new FormControl('', [Validators.required, Validators.pattern(/^\d{1,10}$/)]),
+    "nameUser": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "lastNameUser": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "userName": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]*$/)]),
+    "passwordUser": new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    "passwordUserValidator": new FormControl('', [Validators.required, Validators.maxLength(15)]),
   })
 
   //Here start my modal edit------
@@ -76,9 +76,9 @@ export class ModalUserComponent {
   
   formEditUser = new FormGroup({
     "dniUser": new FormControl({value:'', disabled:true}),
-    "nameUser": new FormControl('', Validators.required),
-    "lastNameUser": new FormControl('', Validators.required),
-    "userName": new FormControl('', Validators.required),
+    "nameUser": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "lastNameUser": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "userName": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]*$/)]),
     "passwordUser": new FormControl('', Validators.required)
   })
 

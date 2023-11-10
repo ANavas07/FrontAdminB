@@ -8,6 +8,8 @@ import { ModalUserComponent } from './modal-user/modal-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalSupplierComponent } from './modal-supplier/modal-supplier.component';
 import { ModalCategoryComponent } from './modal-category/modal-category.component';
+import { ModalProductsComponent } from './modal-products/modal-products.component';
+import { ModalRegistrationComponent } from './modal-registration/modal-registration.component';
 
 //Use the datatable
 
@@ -20,7 +22,9 @@ import { ModalCategoryComponent } from './modal-category/modal-category.componen
     SpinnerComponent,
     ModalUserComponent,
     ModalSupplierComponent,
-    ModalCategoryComponent
+    ModalCategoryComponent,
+    ModalProductsComponent,
+    ModalRegistrationComponent
 
   ],
   imports: [
@@ -35,7 +39,9 @@ import { ModalCategoryComponent } from './modal-category/modal-category.componen
     ModalUserComponent,
     ReactiveFormsModule,
     ModalSupplierComponent,
-    ModalCategoryComponent
+    ModalCategoryComponent,
+    ModalProductsComponent,
+    ModalRegistrationComponent
   ]
 })
 export class SharedModule { }
