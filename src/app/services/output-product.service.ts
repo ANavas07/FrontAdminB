@@ -28,4 +28,10 @@ export class OutputProductService {
       })
     );
   }
+
+  getDataOutputFromDB(): Observable<any>{
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}`);
+  }
+
+
 }

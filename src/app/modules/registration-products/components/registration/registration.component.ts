@@ -69,7 +69,9 @@ export class RegistrationComponent implements OnInit {
         this.toastr.success(v.msg, "Exito!");
         setTimeout(() => {
           this.formAddRegistration.reset();
-          this.registrationList = []
+          //
+          this._productService.clearProductRegistrationList();
+          //
         }, 1000); // wait 5 seconds before to close modal
       },
       error: (e: HttpErrorResponse) => {

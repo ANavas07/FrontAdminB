@@ -31,6 +31,10 @@ export class RegistrationProductService {
     return this.productRegistrationList.asObservable();
   }
 
+  //to clear the list
+  clearProductRegistrationList() {
+    this.productRegistrationList.next([]); // Emite una nueva lista vacía
+  }
 
   /*uses the next method to emit a new value for productList. This new value is a
   new array containing all the current products plus the new product.*/ 
@@ -52,6 +56,10 @@ export class RegistrationProductService {
           this.dataModifiedTable.next()
       })
     );
+  }
+
+  getDataRegistrationFromDB(): Observable<any>{
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}`);
   }
   
 

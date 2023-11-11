@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+<app-aside></app-aside>
+
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Reportes de la empresa</h4>
+            </div>
+        </div>
+        <!-- la tabla esta en este row -->
+        <div class="row text-center">
+            <div class="col-md-12 mb-3">
+
+                <div class="card">
+                    <div class="card-header">
+                        <span><i class="bi bi-table me-2"></i></span> Reportes
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- card to put my graphics -->
+        <div class="row d-flex justify-content-around">
+            <div class="card" style="width: 30rem;">
+                <div style="text-align:center">
+                    <apx-chart [series]="chartOptionsStock.series!" [chart]="chartOptionsStock.chart!"
+                        [xaxis]="chartOptionsStock.xaxis!" [title]="chartOptionsStock.title!"
+                        [fill]="chartOptionsStock.fill!"></apx-chart>
+                </div>
+            </div>
+
+            <div class="card" style="width: 65rem;">
+                <div style="text-align:center">
+                    <apx-chart [series]="chartOptions.series!" [chart]="chartOptions.chart!"
+                        [xaxis]="chartOptions.xaxis!" [title]="chartOptions.title!"></apx-chart>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</main>

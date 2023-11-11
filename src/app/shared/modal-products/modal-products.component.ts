@@ -35,21 +35,46 @@ export class ModalProductsComponent {
     })
   }  
 
+  get idProduct(){
+    return this.formAddProduct.get('idProduct') as FormControl
+  }
+  get productName(){
+    return this.formAddProduct.get('productName') as FormControl
+  }
+  get productPrice(){
+    return this.formAddProduct.get('productPrice') as FormControl
+  }
+  get stock(){
+    return this.formAddProduct.get('stock') as FormControl
+  }
+
+
   formAddProduct = new FormGroup({
     "idProduct": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9]*$/)]),
     "idCatBelong": new FormControl('', Validators.required),
-    "productName": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "productPrice": new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
-    "stock": new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
+    "productName": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]*$/)]),
+    "productPrice": new FormControl('', [Validators.required,Validators.min(1), Validators.max(1000), Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
+    "stock": new FormControl('', [Validators.required,Validators.min(0), Validators.max(5000), Validators.pattern(/^\d+$/)]),
     "available": new FormControl('', Validators.required),
   });
+
+  get productNameEdit(){
+    return this.formEditProduct.get('productName') as FormControl
+  }
+  get productPriceEdit(){
+    return this.formEditProduct.get('productPrice') as FormControl
+  }
+  get stockEdit(){
+    return this.formEditProduct.get('stock') as FormControl
+  }
+
 
   formEditProduct = new FormGroup({
     "idProduct": new FormControl({ value: '', disabled: true }),
     "idCatBelong": new FormControl('', Validators.required),
-    "productName": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "productPrice": new FormControl('', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
-    "stock": new FormControl('', [Validators.required,Validators.pattern(/^\d+$/)]),
+    "productName": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9 ]*$/)]),
+    "productPrice": new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000), Validators.pattern(/^\d+(\.\d{1,2})?$/)]),
+    "stock": new FormControl('', [Validators.required,Validators.min(0), Validators.max(5000), Validators.pattern(/^\d+$/)]),
     "available": new FormControl('', Validators.required),
 
   });

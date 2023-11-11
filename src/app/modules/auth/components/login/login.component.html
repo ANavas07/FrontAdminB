@@ -1,37 +1,37 @@
-<div class="wrapper">
+<div class="mt-5 pt-3 ">
+    <div class="container-fluid d-flex text-align-center justify-content-center align-items-center">
+        <div *ngIf="!loading" class="body">
+            <img class="logo" src="../../../assets/img/login.png" alt="img Login">
+            <h3 class="mb-3">Ingreso</h3>
 
-    <div  class="body">
-        <img class="logo" src="../../../assets/img/login.png" alt="img Login">
-        <h3 class="mb-3">Ingreso</h3>
+            <form [formGroup]="formLogIn" (ngSubmit)="login()">
 
-        <form [formGroup]="formLogIn" (ngSubmit)="login()">
-            
-            <div class="form-floating mb-3">
-                <input type="text" formControlName="userName" class="form-control" placeholder="Ingrese Usuario">
-                <label>Usuario</label>
+                <div class="form-floating mb-3">
+                    <input type="text" formControlName="userName" class="form-control" placeholder="Ingrese Usuario">
+                    <label>Usuario</label>
 
-                <div class="alert alert-danger mt-2" [hidden]="userNameEmpty.valid || userNameEmpty.pristine">
-                    El campo del nombre del usuario esta vacio
+                    <div class="alert alert-danger mt-2" [hidden]="userNameEmpty.valid || userNameEmpty.pristine">
+                        El campo del nombre del usuario esta vacio
+                    </div>
+
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" formControlName="passwordUser" class="form-control"
+                        placeholder="Ingrese Contraseña">
+                    <label>Contraseña</label>
+
+                    <div class="alert alert-danger mt-2" [hidden]="passwordEmpty.valid || passwordEmpty.pristine">
+                        <span *ngIf="passwordEmpty.errors?.['required']">El password esta vacio</span>
+                    </div>
                 </div>
 
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" formControlName="passwordUser" class="form-control" placeholder="Ingrese Contraseña">
-                <label>Contraseña</label>
-
-                <div class="alert alert-danger mt-2" [hidden]="passwordEmpty.valid || passwordEmpty.pristine" >
-                    <span *ngIf="passwordEmpty.errors?.['required']">El password esta vacio</span>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg" [disabled]="formLogIn.invalid">Aceptar</button>
                 </div>
-            </div>
 
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary btn-lg"
-                [disabled]="formLogIn.invalid">Aceptar</button>
-            </div>
-        
-        </form>
+            </form>
+        </div>
+
+        <app-spinner *ngIf="loading"></app-spinner>
     </div>
-
-    <app-spinner *ngIf="loading"></app-spinner>
-
 </div>

@@ -20,16 +20,36 @@ export class ModalCategoryComponent {
     private router: Router, private _errorService: ErrorService) { }
 
 
+    get idCat(){
+      return this.formAddCategory.get('idCat') as FormControl
+    }
+    get nameCat(){
+      return this.formAddCategory.get('nameCat') as FormControl
+    }
+    get descriptionCat(){
+      return this.formAddCategory.get('descriptionCat') as FormControl
+    } 
+
   formAddCategory = new FormGroup({
-    "idCat": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+    "idCat": new FormControl('',  [Validators.required,Validators.maxLength(5) ,Validators.pattern(/^[a-zA-Z0-9]*$/)]),
     "nameCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "descriptionCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "descriptionCat": new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^[a-zA-Z\s]*$/)]),
   });
+
+  get idCatEdit(){
+    return this.formEditCategory.get('idCat') as FormControl
+  }
+  get nameCatEdit(){
+    return this.formEditCategory.get('nameCat') as FormControl
+  }
+  get descriptionCatEdit(){
+    return this.formEditCategory.get('descriptionCat') as FormControl
+  }
 
   formEditCategory = new FormGroup({
     "idCat": new FormControl({value:'', disabled:true}),
     "nameCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "descriptionCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "descriptionCat": new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^[a-zA-Z\s]*$/)]),
   });
 
   addCategory(modalName:string){

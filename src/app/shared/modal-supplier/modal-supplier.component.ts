@@ -17,8 +17,42 @@ export class ModalSupplierComponent {
   constructor(private toastr: ToastrService, private _supplierService: SuppliersService,
     private router: Router, private _errorService: ErrorService) { }
 
+  get idSup(){
+    return this.formAddSupplier.get('idSup') as FormControl
+  }
+  get nameSup(){
+    return this.formAddSupplier.get('nameSup') as FormControl
+  }
+  get phoneSup(){
+    return this.formAddSupplier.get('phoneSup') as FormControl
+  }
+  get addressSup(){
+    return this.formAddSupplier.get('addressSup') as FormControl
+  }
   get emailSup(){
     return this.formAddSupplier.get('emailSup') as FormControl
+  }
+
+  formAddSupplier = new FormGroup({
+    "idSup": new FormControl('',  [Validators.required, Validators.maxLength(5) ,Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+    "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "phoneSup": new FormControl('', [Validators.required, Validators.pattern(/^\+?\d{1,17}$/)]),
+    "addressSup": new FormControl('', [Validators.required, Validators.maxLength(25)]),
+    "emailSup": new FormControl('', [Validators.required, Validators.email])
+  });
+
+  
+  get idSupEdit(){
+    return this.formEditSupplier.get('idSup') as FormControl
+  }
+  get nameSupEdit(){
+    return this.formEditSupplier.get('nameSup') as FormControl
+  }
+  get phoneSupEdit(){
+    return this.formEditSupplier.get('phoneSup') as FormControl
+  }
+  get addressSupEdit(){
+    return this.formEditSupplier.get('addressSup') as FormControl
   }
 
   get emailSupEdit(){
@@ -27,18 +61,10 @@ export class ModalSupplierComponent {
 
 
 
-  formAddSupplier = new FormGroup({
-    "idSup": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9]*$/)]),
-    "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "phoneSup": new FormControl('', [Validators.required, Validators.pattern(/^\d{1,17}$/)]),
-    "addressSup": new FormControl('', Validators.required),
-    "emailSup": new FormControl('', [Validators.required, Validators.email])
-  });
-
   formEditSupplier = new FormGroup({
     "idSup": new FormControl({value:'', disabled:true}),
     "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "phoneSup": new FormControl('',  [Validators.required, Validators.pattern(/^\d{1,17}$/)]),
+    "phoneSup": new FormControl('',  [Validators.required, Validators.pattern(/^\+?\d{1,17}$/)]),
     "addressSup": new FormControl('', Validators.required),
     "emailSup": new FormControl('', [Validators.required, Validators.email])
   });

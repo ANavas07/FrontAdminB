@@ -58,14 +58,6 @@ export class ModalUserComponent {
     return this.formEditUser.get('userName') as FormControl;
   }
 
-  get passwordEmptyE() {
-    return this.formEditUser.get('passwordUser') as FormControl;
-  }
-
-  get dniUserEmptyE() {
-    return this.formEditUser.get('dniUser') as FormControl;
-  }
-
   get nameUserEmptyE() {
     return this.formEditUser.get('nameUser') as FormControl;
   }
@@ -142,6 +134,8 @@ export class ModalUserComponent {
     const modalDiv = document.getElementById(name);
     if (modalDiv != null) {
       modalDiv.style.display = 'none';
+      this.formAddUser.reset();
+      this.formEditUser.reset();
     }
   }
   

@@ -28,6 +28,7 @@ export class OutputComponent {
   ngOnInit(): void {
     this._productService.getProductRegistrationList().subscribe(productRegistrationList => {
       this.registrationList = productRegistrationList;
+      console.log(this.registrationList)
     })
 
     this.getUsersToRegister();
@@ -58,9 +59,12 @@ export class OutputComponent {
     this._outputService.addOutputToDB(output).subscribe({
       next: (v) => {
         this.toastr.success(v.msg, "Exito!");
+        console.log(v)
         setTimeout(() => {
           this.formAddOutput.reset();
-          this.registrationList = []
+          //
+          this._productService.clearProductRegistrationList();
+          //
         }, 1000); // wait 5 seconds before to close modal
       },
       error: (e: HttpErrorResponse) => {

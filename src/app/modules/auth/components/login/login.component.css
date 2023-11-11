@@ -3,14 +3,7 @@ html, body{
     height: 100%;
 }
 
-/*here is everything of css login because we gonna use the same template
-in signIn*/
-.wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
+
 
 .logo{
     height: 170px;
