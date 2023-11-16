@@ -47,7 +47,7 @@ export class UserService {
   editUser(idUser:string, user:UserEdit):Observable<any>{
     return this.http.put<string>(`${this.myAppUrl}${this.myApiUrl}/${idUser}`,user).pipe(
       tap(()=>{
-          this.dataModifiedTable.next()
+          this.dataModifiedTable.next();
       })
     );
   }

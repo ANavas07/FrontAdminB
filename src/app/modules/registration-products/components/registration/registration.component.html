@@ -37,10 +37,11 @@
                                     <option *ngFor="let sup of listSuppliers" [value]="sup.idSup">{{sup.nameSup}}
                                 </datalist>
 
-                                <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="formAddRegistration.invalid">Agregar Registro</button>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                    <button type="submit" class="btn btn-primary btn-sm" [disabled]="formAddRegistration.invalid || registrationList.length ===0">Agregar Registro</button>
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="cancel()">Cancelar</button>
                                 </div>
-
+                                
                             </form>
                         </div>
                     </div>

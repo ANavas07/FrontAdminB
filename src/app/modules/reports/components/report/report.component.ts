@@ -14,7 +14,7 @@ import {
   ApexGrid,
   ApexYAxis,
   ApexDataLabels,
-  ApexTooltip
+  ApexTooltip,
 } from "ng-apexcharts";
 import { OutputProductService } from 'src/app/services/output-product.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -27,9 +27,10 @@ export type ChartOptions = {
   title: ApexTitleSubtitle;
   fill: ApexFill;
   // From here the new imports to be able to graph the new mix chart
+  markers: any; //ApexMarkers;
   stroke: ApexStroke;
   grid: ApexGrid;
-  yaxis: ApexYAxis[];
+  yaxis: ApexYAxis | ApexYAxis[];
   dataLabels: ApexDataLabels;
   tooltip: ApexTooltip;
   legend: ApexLegend;
@@ -47,13 +48,13 @@ export class ReportComponent implements OnInit {
   //graphic chart instance
   public chartOptionsStock: Partial<ChartOptions>;
   public chartOptions: Partial<ChartOptions>;
+  public chartOptionsEarns: Partial<ChartOptions>;
 
 
   //list to save the data to fill in the charts
   //First Chart
   listProductsChartName: any[] = [];
   listProductsChartStock: any[] = [];
-
   //Second chart
   listRegisterMap = new Map<string, any>();
   listOutMap = new Map<string, any>();
@@ -62,15 +63,24 @@ export class ReportComponent implements OnInit {
   namesRegisterSorted: any[] = [];
   valuesOutputSorted: any[] = [];
   namesOutputSorted: any[] = [];
+  //var amount
+  amountEarns:number=0;
+  amountInvest:number=0;
+
 
   constructor(private _productsService: ProductsService, private _registrationService: RegistrationProductService,
     private _outputService: OutputProductService) {
     this.chartOptionsStock = {}
     this.chartOptions = {}
+    this.chartOptionsEarns = {}
     this.dataProducts();
     //here
     this.dataRegister();
     this.dataOutput();
+    //cards report to show totals
+    this.dataEarns();
+    this.dataInvest();
+    
   }
 
   //first chart
@@ -134,23 +144,30 @@ export class ReportComponent implements OnInit {
     })
   }
 
+  dataEarns(){
+    this._outputService.getDataOutputFromDB().subscribe(data =>{
+      console.log(data);
+        for(let value of (data as any).headerListOutput){
+          this.amountEarns+=value.totalCost;
+        }
+    });
+  }
+
+  dataInvest(){
+    this._registrationService.getDataRegistrationFromDB().subscribe(data =>{
+        for(let value of (data as any).headerListRegistration){
+          this.amountInvest+=value.totalCost;
+        }
+    });
+  }
+
   //charts
   ngOnInit(): void {
-
-    //here
-    console.log(this.listRegisterMap);
-    console.log("names reg", this.namesRegisterSorted);
-    console.log("values reg", this.valuesRegisterSorted);
-    console.log("names out", this.namesOutputSorted);
-    console.log("values out", this.valuesOutputSorted);
-    //here
-
-
 
     this.chartOptionsStock = {
       series: [
         {
-          name: "My-series",
+          name: "existencias",
           data: this.listProductsChartStock
         }
       ],
@@ -183,7 +200,7 @@ export class ReportComponent implements OnInit {
       }],
       chart: {
         height: 350,
-        type: 'line',
+        type: 'bar', //change line to bar (fixed error)
         stacked: false
       },
       dataLabels: {
@@ -199,6 +216,7 @@ export class ReportComponent implements OnInit {
       },
       xaxis: {
         categories: this.namesRegisterSorted,
+        type:'category'
       },
       yaxis: [
         {
@@ -215,7 +233,7 @@ export class ReportComponent implements OnInit {
             }
           },
           title: {
-            text: "Income (thousand crores)",
+            text: "Registro (cantidad de productos)",
             style: {
               color: '#008FFB',
             }
@@ -240,7 +258,121 @@ export class ReportComponent implements OnInit {
             }
           },
           title: {
-            text: "Operating Cashflow (thousand crores)",
+            text: "Salida de productos (cantidad de productos)",
+            style: {
+              color: '#00E396',
+            }
+          },
+        },
+        {
+          seriesName: 'Revenue',
+          opposite: true,
+          axisTicks: {
+            show: true,
+          },
+          axisBorder: {
+            show: true,
+            color: '#FEB019'
+          },
+          labels: {
+            style: {
+              colors: '#FEB019',
+            },
+          },
+          title: {
+            text: "Revenue (thousand crores)",
+            style: {
+              color: '#FEB019',
+            }
+          }
+        },
+      ],
+      tooltip: {
+        fixed: {
+          enabled: true,
+          position: 'topLeft', // topRight, topLeft, bottomRight, bottomLeft
+          offsetY: 30,
+          offsetX: 60
+        },
+      },
+      legend: {
+        horizontalAlign: 'left',
+        offsetX: 40
+      }
+    };
+
+    //Reporte 2
+    this.chartOptionsEarns = {
+      series: [{
+        name: 'Registro',
+        type: 'column',
+        data: this.valuesRegisterSorted
+      }, {
+        name: 'Salida',
+        type: 'column',
+        data: this.valuesOutputSorted
+      }],
+      chart: {
+        height: 350,
+        type: 'bar', //change line to bar (fixed error)
+        stacked: false
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        width: [1, 1, 4]
+      },
+      title: {
+        text: 'Analisis de ingreso y salida de productos',
+        align: 'left',
+        offsetX: 110
+      },
+      xaxis: {
+        categories: this.namesRegisterSorted,
+        type:'category'
+      },
+      yaxis: [
+        {
+          axisTicks: {
+            show: true,
+          },
+          axisBorder: {
+            show: true,
+            color: '#008FFB'
+          },
+          labels: {
+            style: {
+              colors: '#008FFB',
+            }
+          },
+          title: {
+            text: "Registro (cantidad de productos)",
+            style: {
+              color: '#008FFB',
+            }
+          },
+          tooltip: {
+            enabled: true
+          }
+        },
+        {
+          seriesName: 'Income',
+          opposite: true,
+          axisTicks: {
+            show: true,
+          },
+          axisBorder: {
+            show: true,
+            color: '#00E396'
+          },
+          labels: {
+            style: {
+              colors: '#00E396',
+            }
+          },
+          title: {
+            text: "Salida de productos (cantidad de productos)",
             style: {
               color: '#00E396',
             }

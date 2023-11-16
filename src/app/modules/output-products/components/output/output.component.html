@@ -31,8 +31,9 @@
                                     <option *ngFor="let user of listUsers" [value]="user.dniUser">{{user.nameUser}}
                                 </datalist>
 
-                                <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-success btn-sm" [disabled]="formAddOutput.invalid">Agregar Salida</button>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                    <button type="submit" class="btn btn-success btn-sm" [disabled]="formAddOutput.invalid || registrationList.length ===0">Agregar Salida</button>
+                                    <button type="button" class="btn btn-danger btn-sm">Cancelar</button>
                                 </div>
 
                             </form>

@@ -93,5 +93,9 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
+  cancel(){
+    this.formAddRegistration.reset();
+  }
+
 
 }
