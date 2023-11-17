@@ -31,9 +31,9 @@ export class ModalCategoryComponent {
     } 
 
   formAddCategory = new FormGroup({
-    "idCat": new FormControl('',  [Validators.required,Validators.maxLength(5) ,Validators.pattern(/^[a-zA-Z0-9]*$/)]),
-    "nameCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "descriptionCat": new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "idCat": new FormControl('',  [Validators.required, Validators.maxLength(5) ,Validators.pattern(/^[a-zA-Z0-9]*$/)]),
+    "nameCat": new FormControl('', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "descriptionCat": new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]),
   });
 
   get idCatEdit(){
@@ -48,8 +48,8 @@ export class ModalCategoryComponent {
 
   formEditCategory = new FormGroup({
     "idCat": new FormControl({value:'', disabled:true}),
-    "nameCat": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "descriptionCat": new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "nameCat": new FormControl('', [Validators.required, Validators.maxLength(10) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "descriptionCat": new FormControl('', [Validators.required, Validators.maxLength(25), Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]),
   });
 
   addCategory(modalName:string){

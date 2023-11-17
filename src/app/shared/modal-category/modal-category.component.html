@@ -23,6 +23,7 @@
                                 <input type="text" formControlName="nameCat" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="nameCat.valid || nameCat.pristine">
                                     *No se aceptan caracteres extraños ni numeros<br>
+                                    *Longitud maxima de 10 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <label class="col-form-label">Descripción de la categoria</label>
@@ -68,6 +69,7 @@
                                 <input type="text" formControlName="nameCat" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="nameCatEdit.valid || nameCatEdit.pristine">
                                     *No se aceptan caracteres extraños <br>
+                                    *Longitud maxima de 10 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <label class="col-form-label">Descripción de la categoria</label>

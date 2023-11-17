@@ -45,9 +45,9 @@ export class ModalUserComponent {
 
   formAddUser = new FormGroup({
     "dniUser": new FormControl('', [Validators.required, Validators.pattern(/^\d{1,10}$/)]),
-    "nameUser": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "lastNameUser": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "userName": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]*$/)]),
+    "nameUser": new FormControl('', [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "lastNameUser": new FormControl('',  [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "userName": new FormControl('', [Validators.required,Validators.maxLength(10) ,Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]),
     "passwordUser": new FormControl('', [Validators.required, Validators.maxLength(15)]),
     "passwordUserValidator": new FormControl('', [Validators.required, Validators.maxLength(15)]),
   })
@@ -68,9 +68,9 @@ export class ModalUserComponent {
   
   formEditUser = new FormGroup({
     "dniUser": new FormControl({value:'', disabled:true}),
-    "nameUser": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "lastNameUser": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
-    "userName": new FormControl('',  [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]*$/)]),
+    "nameUser": new FormControl('', [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "lastNameUser": new FormControl('',  [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "userName": new FormControl('',  [Validators.required, Validators.maxLength(10) ,Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]),
     "passwordUser": new FormControl('', Validators.required)
   })
 

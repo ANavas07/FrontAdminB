@@ -16,6 +16,7 @@
                                 <input type="text" formControlName="idProduct" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="idProduct.valid || idProduct.pristine">
                                     *No se aceptan caracteres extraños <br>
+                                    *Longitud de caracteres maximo de 7 <br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <!-- Datalist -->
@@ -33,6 +34,7 @@
                                 <div class="alert alert-danger mt-1"
                                     [hidden]="productName.valid || productName.pristine">
                                     *No se aceptan caracteres extraños<br>
+                                    *Longitud maxima de 20 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <label class="col-form-label">Precio</label>
@@ -106,8 +108,9 @@
                                 <input type="text" formControlName="productName" class="form-control">
                                 <div class="alert alert-danger mt-1"
                                     [hidden]="productNameEdit.valid || productNameEdit.pristine">
-                                    No se aceptan caracteres extraños
-                                    El campo no puede estar vacio
+                                    *No se aceptan caracteres extraños<br>
+                                    *Longitud maxima de 20 caracteres<br>
+                                    *El campo no puede estar vacio
                                 </div>
                                 <label class="col-form-label">Precio</label>
                                 <input type="text" formControlName="productPrice" class="form-control">

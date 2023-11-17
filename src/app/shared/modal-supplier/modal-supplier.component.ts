@@ -35,7 +35,7 @@ export class ModalSupplierComponent {
 
   formAddSupplier = new FormGroup({
     "idSup": new FormControl('',  [Validators.required, Validators.maxLength(5) ,Validators.pattern(/^[a-zA-Z0-9]*$/)]),
-    "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "nameSup": new FormControl('', [Validators.required, Validators.maxLength(20),Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
     "phoneSup": new FormControl('', [Validators.required, Validators.pattern(/^\+?\d{1,17}$/)]),
     "addressSup": new FormControl('', [Validators.required, Validators.maxLength(25)]),
     "emailSup": new FormControl('', [Validators.required, Validators.email])
@@ -63,7 +63,7 @@ export class ModalSupplierComponent {
 
   formEditSupplier = new FormGroup({
     "idSup": new FormControl({value:'', disabled:true}),
-    "nameSup": new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]),
+    "nameSup": new FormControl('', [Validators.required, Validators.maxLength(20),Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
     "phoneSup": new FormControl('',  [Validators.required, Validators.pattern(/^\+?\d{1,17}$/)]),
     "addressSup": new FormControl('', Validators.required),
     "emailSup": new FormControl('', [Validators.required, Validators.email])

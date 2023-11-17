@@ -16,8 +16,11 @@ export class AsideComponent implements OnInit {
   }
 
   logout(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    const result= confirm("¿Estas seguro de salir de la aplicación?");
+    if(result){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnInit(): void {

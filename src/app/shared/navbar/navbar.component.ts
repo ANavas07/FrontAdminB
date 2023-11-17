@@ -11,7 +11,10 @@ export class NavbarComponent {
   constructor(private router:Router){}
 
   logout(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    const result= confirm("¿Estas seguro de salir de la aplicación?");
+    if(result){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   }
 }
