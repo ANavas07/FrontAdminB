@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User, UserEdit } from 'src/app/interfaces/user.interfaces';
@@ -14,11 +14,26 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./modal-user.component.css']
 })
 export class ModalUserComponent {
-
+  
   constructor(private toastr: ToastrService, private _userService: UserService,
-    private router: Router, private _errorService: ErrorService) { }
+    private router: Router, private _errorService: ErrorService, private formBuilder: FormBuilder) {
+      this.formAddUser = this.formBuilder.group({
+        "dniUser": ['', [
+          Validators.required,
+          Validators.maxLength(10),
+          Validators.pattern(/^\d{1,10}$/),
+        ], [
+          this.validateCedula.bind(this)
+        ]],
+        "nameUser": ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/)]],
+        "lastNameUser": ['', [Validators.required, Validators.maxLength(20), Validators.pattern(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/)]],
+        "userName": ['', [Validators.required, Validators.maxLength(10), Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]],
+        "passwordUser": ['', [Validators.required, Validators.maxLength(15)]],
+        "passwordUserValidator": ['', [Validators.required, Validators.maxLength(15)]],
+      });
+     }
 
-
+    formAddUser: FormGroup;
   get userNameEmpty() {
     return this.formAddUser.get('userName') as FormControl;
   }
@@ -43,15 +58,61 @@ export class ModalUserComponent {
     return this.formAddUser.get('passwordUserValidator') as FormControl;
   }
 
-  formAddUser = new FormGroup({
-    "dniUser": new FormControl('', [Validators.required, Validators.pattern(/^\d{1,10}$/)]),
-    "nameUser": new FormControl('', [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
-    "lastNameUser": new FormControl('',  [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
-    "userName": new FormControl('', [Validators.required,Validators.maxLength(10) ,Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]),
-    "passwordUser": new FormControl('', [Validators.required, Validators.maxLength(15)]),
-    "passwordUserValidator": new FormControl('', [Validators.required, Validators.maxLength(15)]),
-  })
-
+  
+  //--------------Validar cedula-------------
+  validateCedula = (control: FormControl) => {
+    const cedula: number = control.value as number;
+  
+    return new Promise((resolve) => {
+      const cedulaString: string = cedula.toString(); // Convertir a cadena para mantener compatibilidad con la lógica existente
+  
+      if (cedulaString.length === 10) {
+        const digito_region = +cedulaString.substring(0, 2);
+  
+        if (digito_region >= 1 && digito_region <= 24) {
+          const ultimo_digito = +cedulaString.substring(9, 10);
+          const pares =
+            +cedulaString.substring(1, 2) +
+            +cedulaString.substring(3, 4) +
+            +cedulaString.substring(5, 6) +
+            +cedulaString.substring(7, 8);
+  
+          let numero1 = +cedulaString.substring(0, 1) * 2;
+          numero1 = numero1 > 9 ? numero1 - 9 : numero1;
+  
+          let numero3 = +cedulaString.substring(2, 3) * 2;
+          numero3 = numero3 > 9 ? numero3 - 9 : numero3;
+  
+          let numero5 = +cedulaString.substring(4, 5) * 2;
+          numero5 = numero5 > 9 ? numero5 - 9 : numero5;
+  
+          let numero7 = +cedulaString.substring(6, 7) * 2;
+          numero7 = numero7 > 9 ? numero7 - 9 : numero7;
+  
+          let numero9 = +cedulaString.substring(8, 9) * 2;
+          numero9 = numero9 > 9 ? numero9 - 9 : numero9;
+  
+          const impares = numero1 + numero3 + numero5 + numero7 + numero9;
+  
+          const suma_total = pares + impares;
+          const primer_digito_suma = +String(suma_total).substring(0, 1);
+          const decena = (primer_digito_suma + 1) * 10;
+          const digito_validador = decena - suma_total;
+  
+          if ((digito_validador === 10 && ultimo_digito === 0) || digito_validador === ultimo_digito) {
+            resolve(null); // Cédula válida
+          } else {
+            resolve({ invalidCedula: true }); // Cédula inválida
+          }
+        } else {
+          resolve({ invalidRegion: true }); // Región inválida
+        }
+      } else {
+        resolve({ invalidLength: true }); // Longitud inválida
+      }
+    });
+  };
+  
   //Here start my modal edit------
 
   get userNameEmptyE() {
@@ -68,8 +129,8 @@ export class ModalUserComponent {
   
   formEditUser = new FormGroup({
     "dniUser": new FormControl({value:'', disabled:true}),
-    "nameUser": new FormControl('', [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
-    "lastNameUser": new FormControl('',  [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑ\s]*$/)]),
+    "nameUser": new FormControl('', [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/)]),
+    "lastNameUser": new FormControl('',  [Validators.required, Validators.maxLength(20) ,Validators.pattern(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/)]),
     "userName": new FormControl('',  [Validators.required, Validators.maxLength(10) ,Validators.pattern(/^[a-zA-Z0-9ñÑ\s]*$/)]),
     "passwordUser": new FormControl('', Validators.required)
   })
@@ -138,5 +199,6 @@ export class ModalUserComponent {
       this.formEditUser.reset();
     }
   }
+  
   
 }

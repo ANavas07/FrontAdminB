@@ -12,9 +12,9 @@
                             <div class="form-group">
                                 <br>
                                 <label class="col-form-label">Cedula de identidad</label>
-                                <input type="text" formControlName="dniUser"  class="form-control">
+                                <input type="text" formControlName="dniUser" class="form-control" maxlength="10" inputmode="numeric">
                                 <div class="alert alert-danger mt-1" [hidden]="dniUserEmpty.valid || dniUserEmpty.pristine">
-                                    *El formato de la cedula no concuerda, maximo 10 caracteres
+                                    *El formato de la cedula no concuerda o es invalida, maximo 10 caracteres
                                 </div>
                                 <label class="col-form-label">Nombre</label>
                                 <input type="text" formControlName="nameUser" class="form-control">
