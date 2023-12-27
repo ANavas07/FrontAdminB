@@ -15,6 +15,11 @@
     transform: rotate(180deg);
 }
 
+#danger:hover{
+        background-color: red;
+        border-color: red;
+        color: white;
+}
 
 /* this is to remove the backdrop */
 
@@ -31,4 +36,9 @@
         height: calc(100% - var(--topNavbarHeight));
         top: var(--topNavbarHeight);
     }
+    #danger:hover{
+        background-color: red;
+        border-color: red;
+        color: white;
+}
 } 

@@ -25,15 +25,15 @@ export class DashboardCardsService {
     { title: 'Agregar Producto', icon: 'add_circle', color: 'primary', textColor: 'white', modal: 'ProductModal' },
     { title: 'Agregar Categoria', icon: 'category', color: 'info', textColor: 'dark', modal: 'categoryModal' },
     { title: 'Agregar Proveedor', icon: 'apartment', color: 'warning', textColor: 'dark', modal: 'supplierModal' },
-    { title: 'Agregar usuario', icon: 'person_add', color: 'success', textColor: 'white', modal: 'userModal' }
+    { title: 'Agregar Usuario', icon: 'person_add', color: 'success', textColor: 'white', modal: 'userModal' }
   ];
 
   private listCardsUsers: ICardsMenu[] = [
-    { title: 'Agregar usuario', icon: 'person_add', color: 'success', textColor: 'white', modal: 'userModal' }
+    { title: 'Agregar Usuario', icon: 'person_add', color: 'success', textColor: 'white', modal: 'userModal' }
   ];
 
   private listCardsSuppliers: ICardsMenu[] = [
-    { title: 'Agregar proveedor', icon: 'apartment', color: 'warning', textColor: 'dark', modal: 'supplierModal' }
+    { title: 'Agregar Proveedor', icon: 'apartment', color: 'warning', textColor: 'dark', modal: 'supplierModal' }
   ];
 
   private listCardsCategories: ICardsMenu[] = [

@@ -31,6 +31,12 @@ button {
     cursor: pointer;
     transform: scale(1.05);
 }
+#cuadro{
+    padding: 20px;
+}
+#title{
+    padding: 20px;
+}
 
 
 @media (min-width: 992px) {

@@ -31,6 +31,9 @@ button {
     cursor: pointer;
     transform: scale(1.05);
 }
+#cuadros{
+    padding: 20px;
+}
 
 
 @media (min-width: 992px) {
@@ -53,5 +56,11 @@ button {
         visibility: visible !important;
         height: calc(100% - var(--topNavbarHeight));
         top: var(--topNavbarHeight);
+    }
+    #cuadros{
+        padding: auto;
+    }
+    #respectiva{
+        padding: 10px;
     }
 }

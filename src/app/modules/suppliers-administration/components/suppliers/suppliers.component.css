@@ -32,6 +32,15 @@ button {
     transform: scale(1.05);
 }
 
+#cuadro{
+    padding: 20px;
+}
+#title{
+    padding: 20px;
+}
+
+
+
 
 @media (min-width: 992px) {
     body {
@@ -53,5 +62,9 @@ button {
         visibility: visible !important;
         height: calc(100% - var(--topNavbarHeight));
         top: var(--topNavbarHeight);
+    }
+
+    #cuadro{
+        padding: auto;
     }
 }

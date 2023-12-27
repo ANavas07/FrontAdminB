@@ -15,3 +15,8 @@ html, body{
     width: 100%;
     text-align: center;
 }
+.fondo-blanco {
+    background-color: white;
+    padding: 40px;
+}
+
