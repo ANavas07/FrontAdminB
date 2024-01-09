@@ -71,7 +71,7 @@ export class SuppliersComponent {
     }
   
     deleteSupplier(idSup: string) {
-      if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+      if (window.confirm('¿Estás seguro de que quieres eliminar este proveedor?')) {
             this._suppliersService.deleteSuppliers(idSup).subscribe({
               next: (v) => {
                 this.toastr.success(v.msg, "Exito!");

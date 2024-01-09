@@ -66,7 +66,7 @@ export class CategoriesComponent {
     }
   
     deleteCategory(idCat: string) {
-      if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+      if (window.confirm('¿Estás seguro de que quieres eliminar esta categoría?')) {
             this._categoriesService.deleteCategory(idCat).subscribe({
               next: (v) => {
                 this.toastr.success(v.msg, "Exito!");

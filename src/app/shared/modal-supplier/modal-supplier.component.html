@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar Proovedores</h5>
+                <h5 class="modal-title">Agregar Proveedores</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal('supplierModal')"></button>
             </div>
@@ -16,26 +16,26 @@
                                 <input type="text" formControlName="idSup" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="idSup.valid || idSup.pristine">
                                     *No se permite caracteres extraños<br>
-                                    *El campo no puede estar vacio
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Nombre del proveedor</label>
                                 <input type="text" formControlName="nameSup" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="nameSup.valid || nameSup.pristine">
                                     *No se permite caracteres extraños<br>
-                                    *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
-                                <label class="col-form-label">Numero telefonico</label>
+                                <label class="col-form-label">Numero telefónico</label>
                                 <input type="text" formControlName="phoneSup" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="phoneSup.valid || phoneSup.pristine">
-                                    *Longitud maxima de 17 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Longitud máxima de 17 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Dirección</label>
                                 <input type="text" formControlName="addressSup" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="addressSup.valid || addressSup.pristine">
-                                    *La direccion no puede tener más de 25 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *La dirección no puede tener más de 25 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Email</label>
                                 <input type="text" formControlName="emailSup" class="form-control">
@@ -64,7 +64,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar Proovedores</h5>
+                <h5 class="modal-title">Editar Proveedores</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal('supplierEditModal')"></button>
             </div>

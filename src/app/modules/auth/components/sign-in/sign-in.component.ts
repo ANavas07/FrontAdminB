@@ -68,7 +68,7 @@ export class SignInComponent {
   }
 
   deleteUser(idUser: string) {
-    if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+    if (window.confirm('¿Estás seguro de que quieres eliminar este usuario?')) {
           this._userService.deleteUserById(idUser).subscribe({
             next: (v) => {
               this.toastr.success(v.msg, "Exito!");

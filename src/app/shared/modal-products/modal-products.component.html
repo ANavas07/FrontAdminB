@@ -16,8 +16,8 @@
                                 <input type="text" formControlName="idProduct" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="idProduct.valid || idProduct.pristine">
                                     *No se aceptan caracteres extraños <br>
-                                    *Longitud de caracteres maximo de 7 <br>
-                                    *El campo no puede estar vacio
+                                    *Longitud de caracteres máximo de 7 <br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <!-- Datalist -->
                                 <label for="exampleDataList" class="form-label">Categoria</label>
@@ -34,8 +34,8 @@
                                 <div class="alert alert-danger mt-1"
                                     [hidden]="productName.valid || productName.pristine">
                                     *No se aceptan caracteres extraños<br>
-                                    *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Precio</label>
                                 <input type="text" formControlName="productPrice" class="form-control">
@@ -43,7 +43,7 @@
                                     [hidden]="productPrice.valid || productPrice.pristine">
                                     *El precio del producto debe estar comprendido entre 1 y 1000<br>
                                     *Solo se permiten cantidades<br>
-                                    *El campo no puede estar vacio
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Existencias</label>
                                 <input type="text" formControlName="stock" class="form-control">
@@ -51,7 +51,7 @@
                                     [hidden]="stock.valid || stock.pristine">
                                     *Numero de existencias permitidas 0 y 5000<br>
                                     *Solo se permiten cantidades<br>
-                                    *El campo no puede estar vacio
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Disponibilidad</label>
                                 <select formControlName="available" class="form-select form-select-sm"

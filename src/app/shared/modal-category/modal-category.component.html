@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agregar Categorias</h5>
+                <h5 class="modal-title">Agregar Categorías</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal('categoryModal')"></button>
             </div>
@@ -12,24 +12,24 @@
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
-                                <label class="col-form-label">Identificador Categoria</label>
+                                <label class="col-form-label">Identificador Categoría</label>
                                 <input type="text" formControlName="idCat" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="idCat.valid || idCat.pristine">
                                     *No se aceptan caracteres extraños <br>
-                                    *Longitud maxima de 5 caracteres<br>
+                                    *Longitud máxima de 5 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <label class="col-form-label">Nombre de la Categoria</label>
                                 <input type="text" formControlName="nameCat" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="nameCat.valid || nameCat.pristine">
-                                    *No se aceptan caracteres extraños ni numeros<br>
-                                    *Longitud maxima de 10 caracteres<br>
+                                    *No se aceptan caracteres extraños ni números<br>
+                                    *Longitud máxima de 10 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <label class="col-form-label">Descripción de la categoria</label>
                                 <input type="text" formControlName="descriptionCat" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="descriptionCat.valid || descriptionCat.pristine">
-                                    *Longitud maxima de 25 caracteres<br>
+                                    *Longitud máxima de 25 caracteres<br>
                                     *El campo no puede estar vacio
                                 </div>
                                 <br>

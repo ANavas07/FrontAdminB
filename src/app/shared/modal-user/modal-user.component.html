@@ -14,41 +14,41 @@
                                 <label class="col-form-label">Cedula de identidad</label>
                                 <input type="text" formControlName="dniUser"  class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="dniUserEmpty.valid || dniUserEmpty.pristine">
-                                    *El formato de la cedula no concuerda, maximo 10 caracteres
+                                    *El formato de la cédula no concuerda, máximo 10 caracteres
                                 </div>
                                 <label class="col-form-label">Nombre</label>
                                 <input type="text" formControlName="nameUser" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="nameUserEmpty.valid || nameUserEmpty.pristine">
-                                    *No se permite caracteres extraños o numeros<br>
-                                    *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *No se permite caracteres extraños o números<br>
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Apellido</label>
                                 <input type="text" formControlName="lastNameUser" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="lastNameUserEmpty.valid || lastNameUserEmpty.pristine">
-                                    *No se permite caracteres extraños o numeros<br>
-                                    *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *No se permite caracteres extraños o números<br>
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Nombre de usuario</label>
                                 <input type="text" formControlName="userName" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="userNameEmpty.valid || userNameEmpty.pristine">
-                                    *No se permite caracteres extraños o numeros<br>
-                                    *Longitud maxima de 10 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *No se permite caracteres extraños o números<br>
+                                    *Longitud máxima de 10 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Contraseña</label>
                                 <input type="text" formControlName="passwordUser"  class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="passwordEmpty.valid || passwordEmpty.pristine">
                                     Upps!
-                                    *Las contraseñas pueden tener maximo 15 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Las contraseñas pueden tener máximo 15 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Repetir Contraseña</label>
                                 <div class="alert alert-danger mt-1" [hidden]="passwordValidatorEmpty.valid || passwordValidatorEmpty.pristine">
                                     Upps! 
-                                    *Las contraseñas pueden tener maximo 15 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *Las contraseñas pueden tener máximo 15 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <input type="text" formControlName="passwordUserValidator" class="form-control">
                                 <br>
@@ -71,7 +71,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Editar usuarios</h5>
+                <h5 class="modal-title">Editar Usuarios</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal('userModaledit')"></button>
             </div>
 
@@ -82,28 +82,28 @@
                         <div class="col-lg-10 row">
                             <div class="form-group">
                                 <br>
-                                <label class="col-form-label">Cedula de identidad</label>
+                                <label class="col-form-label">Cédula de identidad</label>
                                 <input type="text" formControlName="dniUser"  class="form-control">
                                 <label class="col-form-label">Nombre</label>
                                 <input type="text" formControlName="nameUser" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="nameUserEmptyE.valid || nameUserEmptyE.pristine">
-                                    *No se permite caracteres extraños o numeros<br>
-                                    *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *No se permite caracteres extraños o números<br>
+                                    *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Apellido</label>
                                 <input type="text" formControlName="lastNameUser" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="lastNameUserEmptyE.valid || lastNameUserEmptyE.pristine">
-                                   *No se permite caracteres extraños o numeros<br>
-                                   *Longitud maxima de 20 caracteres<br>
-                                    *El campo no puede estar vacio
+                                   *No se permite caracteres extraños o números<br>
+                                   *Longitud máxima de 20 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <label class="col-form-label">Nombre de usuario</label>
                                 <input type="text" formControlName="userName" class="form-control">
                                 <div class="alert alert-danger mt-1" [hidden]="userNameEmptyE.valid || userNameEmptyE.pristine">
-                                    *No se permite caracteres extraños o numeros<br>
-                                    *Longitud maxima de 10 caracteres<br>
-                                    *El campo no puede estar vacio
+                                    *No se permite caracteres extraños o números<br>
+                                    *Longitud máxima de 10 caracteres<br>
+                                    *El campo no puede estar vacío
                                 </div>
                                 <br>
                             </div>
