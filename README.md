@@ -1,27 +1,56 @@
-# FrontAdmin
+# FrontAdmin - Inventory Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+FrontAdmin is an Angular-based inventory management system with a comprehensive set of features for managing products, categories, suppliers, users, and generating reports.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **User Authentication**: Secure login system with token-based authentication
+- **Dashboard**: Overview of system operations with quick access cards
+- **Product Management**: Add, edit, and delete products with stock tracking
+- **Category Management**: Organize products into categories
+- **Supplier Management**: Maintain supplier information
+- **Inventory Transactions**: 
+  - Product registration (incoming inventory)
+  - Product output (sales/outgoing inventory)
+- **Reporting**: Visual analytics with ApexCharts integration
+- **User Management**: Create and manage system users
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Frontend**: Angular 16
+- **UI Components**: Bootstrap 5
+- **Charts**: ApexCharts
+- **Authentication**: JWT
+- **State Management**: RxJS Subjects and BehaviorSubjects
+- **Forms**: Reactive Forms with extensive validation
+- **HTTP**: HttpClient with interceptors
+- **Modals**: Custom modal system
+- **Tables**: DataTables integration
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   cd front-admin
 
-## Running unit tests
+   npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+src/
+├── app/
+│   ├── core/                  # Core services
+│   ├── interfaces/            # TypeScript interfaces
+│   ├── modules/               # Feature modules
+│   │   ├── administration/    # Dashboard module
+│   │   ├── auth/              # Authentication module
+│   │   ├── categories-administration/
+│   │   ├── output-products/
+│   │   ├── registration-products/
+│   │   ├── reports/
+│   │   └── suppliers-administration/
+│   ├── services/              # Data services
+│   ├── shared/                # Shared components
+│   ├── utils/                 # Interceptors and guards
+│   └── *.module.ts            # Main application modules
+├── assets/                    # Static assets
+└── environments/              # Environment configurations
